@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // const baseURL = 'https://www.goodreads.com/review/show.xml'
 
-const goodReadsKey = 'bnvmG89d34ly1kxsrlUfZA'
+const goodReadsKey = ''
 
 goodreads.get('/search',
     {
