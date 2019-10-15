@@ -8,7 +8,7 @@ const goodReadsKey = ''
 goodreads.get('/search',
     {
       params: {
-      key: 'bnvmG89d34ly1kxsrlUfZA',
+      key: goodReadsKey,
       q: 'All the Light We Cannot See'
       }
 )
