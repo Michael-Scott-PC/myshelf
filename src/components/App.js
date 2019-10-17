@@ -5,10 +5,28 @@ import BooksList from './BooksList';
 import BookDetail from './BookDetail';
 import googleBooks from '../apis/googleBooks';
 
+//require('dotenv').config();
+
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+  };
+
   state = {
     books: [],
-    selectedBook: null
+    selectedBook: null,
+    bookISBN: '',
+  };
+
+  componentDidMount() {
+    this.onTermSubmit({ term: 'top books of the month' });
+
+    console.log(window.windowISBN);
+  };
+
+  componentDidUpdate() {
+    console.log(window.windowISBN);
+    console.log(window.viewer)
   };
 
   onTermSubmit = async term => {
@@ -18,7 +36,21 @@ class App extends React.Component {
       }
     });
 
-    console.log(response.data);
+    this.setState({
+      books: response.data.items,
+      selectedBook: response.data.items[0],
+      bookISBN: `${response.data.items[0].volumeInfo.industryIdentifiers[0].identifier}`
+    });
+    window.initialize(`${response.data.items[0].volumeInfo.industryIdentifiers[0].identifier}`);
+  };
+
+  onBookSelect = (book) => {
+    this.setState({ 
+      selectedBook: book,  
+      bookISBN: `${book.volumeInfo.industryIdentifiers[0].identifier}`,
+      pdf: book.accessInfo.webReaderLink
+    });
+    window.initialize(`${book.volumeInfo.industryIdentifiers[0].identifier}`);
   };
 
   render() {
@@ -32,14 +64,18 @@ class App extends React.Component {
           </div>
           <div className="ui row">
             <div className="eleven wide column">
-              <BookDetail />
+              <div id="viewerCanvas" src={this.state.bookISBN} style={{width: '600px', height: '500px'}} className="row">
+                  Preview
+              </div>
+              <div className="" style={{'margin-top': '5%'}}>
+              <BookDetail book={this.state.selectedBook} /> 
+              </div>
             </div>
             <div className="five wide column">
-              <BooksList />
-              <BooksList />
-              <BooksList />
-              <BooksList />
-              <BooksList />
+              <BooksList 
+                books={this.state.books} 
+                onBookSelect={this.onBookSelect}
+              />
             </div>
           </div>
         </div>

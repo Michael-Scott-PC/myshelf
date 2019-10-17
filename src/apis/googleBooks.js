@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-
-const KEY = 'AIzaSyBIZBpSccNpUU7trBZnG8RkmA9_L97L1II';
+const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 
 export default axios.create({
     baseURL: 'https://www.googleapis.com',
     params: {
-        key: KEY,
+        key: API_KEY,
         maxResults: 5,
     }
 });
