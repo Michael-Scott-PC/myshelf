@@ -5,8 +5,6 @@ import BooksList from './BooksList';
 import BookDetail from './BookDetail';
 import googleBooks from '../apis/googleBooks';
 
-//require('dotenv').config();
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +13,7 @@ class App extends React.Component {
   state = {
     books: [],
     selectedBook: null,
-    bookISBN: '',
+    bookISBN: ''
   };
 
   componentDidMount() {
@@ -64,10 +62,10 @@ class App extends React.Component {
           </div>
           <div className="ui row">
             <div className="eleven wide column">
-              <div id="viewerCanvas" src={this.state.bookISBN} style={{width: '600px', height: '500px'}} className="row">
+              <div id="viewerCanvas" src={this.state.bookISBN} style={{width: '100%', height: '60%'}} className="row">
                   Preview
               </div>
-              <div className="" style={{'margin-top': '5%'}}>
+              <div className="" style={{'margin-top': '2%'}}>
               <BookDetail book={this.state.selectedBook} /> 
               </div>
             </div>

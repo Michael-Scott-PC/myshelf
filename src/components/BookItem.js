@@ -1,18 +1,17 @@
+import './BookItem.css';
 import React from 'react';
 
 const BookItem = ({ book, onBookSelect }) => {
 
     if (!book.volumeInfo.imageLinks) {
         return (
-            //<div className="ui relaxed divided list">
-                <div onClick={() => onBookSelect(book)} className="item">
-                    <div className="content">
-                        <div className="header">{book.volumeInfo.title}</div>
-                        <div className="meta">{book.volumeInfo.authors}</div>
-                        <div className="ui tiny star rating" data-rating="3" data-max-rating="5">Average Rating: {book.volumeInfo.averageRating}</div>
-                    </div>
+            <div onClick={() => onBookSelect(book)} className="item">
+                <div className="content">
+                    <div className="header">{book.volumeInfo.title}</div>
+                    <div className="meta">{book.volumeInfo.authors}</div>
+                    <div className="ui tiny star rating" data-rating="3" data-max-rating="5">Average Rating: {book.volumeInfo.averageRating}</div>
                 </div>
-            //</div>
+            </div>
         );
     }
     return (
@@ -21,7 +20,7 @@ const BookItem = ({ book, onBookSelect }) => {
             <div className="content">
                 <div className="header">{book.volumeInfo.title}</div>
                 <div className="meta">{book.volumeInfo.authors}</div>
-                <div className="ui tiny star rating" data-rating="3" data-max-rating="5">Average Rating: {book.volumeInfo.averageRating}</div>
+                <div className="ui tiny star rating" data-rating="3" data-max-rating="5">Average Rating: {book.volumeInfo.averageRating} / 5</div>
             </div>
         </div>
     );
