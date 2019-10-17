@@ -3,12 +3,12 @@ import axios from 'axios';
 
 // const baseURL = 'https://www.goodreads.com/review/show.xml'
 
-const goodReadsKey = 'bnvmG89d34ly1kxsrlUfZA'
+const goodReadsKey = ''
 
 goodreads.get('/search',
     {
       params: {
-      key: 'bnvmG89d34ly1kxsrlUfZA',
+      key: goodReadsKey,
       q: 'All the Light We Cannot See'
       }
 )
