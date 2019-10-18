@@ -9,7 +9,7 @@ const BookItem = ({ book, onBookSelect }) => {
                 <div className="content">
                     <div className="header">{book.volumeInfo.title}</div>
                     <div className="meta">{book.volumeInfo.authors}</div>
-                    <div className="ui tiny star rating" data-rating="3" data-max-rating="5">Average Rating: {book.volumeInfo.averageRating}</div>
+                    <div className="ui tiny star rating" data-rating="3" data-max-rating="5">Average Rating: {book.volumeInfo.averageRating} / 5</div>
                 </div>
             </div>
         );

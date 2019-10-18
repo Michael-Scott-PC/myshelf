@@ -1,9 +1,11 @@
+import './App.css';
 import React from 'react';
 
 import SearchBar from './SearchBar';
 import BooksList from './BooksList';
 import BookDetail from './BookDetail';
 import googleBooks from '../apis/googleBooks';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -55,7 +57,7 @@ class App extends React.Component {
     return (
       <div className="ui container app">
         <div className="ui grid">
-          <div className="ui row">
+          <div id="searchbar" className="ui row">
             <div className="fourteen wide column">
               <SearchBar onTermSubmit={this.onTermSubmit} />
             </div>
@@ -65,7 +67,7 @@ class App extends React.Component {
               <div id="viewerCanvas" src={this.state.bookISBN} style={{width: '100%', height: '60%'}} className="row">
                   Preview
               </div>
-              <div className="" style={{'margin-top': '2%'}}>
+              <div className="" style={{marginTop: '2%'}}>
               <BookDetail book={this.state.selectedBook} /> 
               </div>
             </div>
